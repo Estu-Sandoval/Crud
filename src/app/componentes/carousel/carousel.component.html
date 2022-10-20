@@ -1,0 +1,8 @@
+<p-carousel [value]="misImagenes">
+    <ng-template let-car pTemplate="item">
+        <img src="{{car}}" alt="imagen" style="width: 50%; height:75%; margin:0 25%">
+    </ng-template>
+</p-carousel>
+
+<label>Dato a enviar: <input #itemEnviar></label>
+<button pButton label="Enviar" class="p-button-success p-button-rounded" (click)="agregarItem(itemEnviar.value)"></button>

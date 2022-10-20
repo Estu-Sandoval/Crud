@@ -1,0 +1,77 @@
+<p-menubar [model]="items">
+    <button pButton label="Iniciar Sesión" class="p-button-success p-button-rounded" (click)="verificarUsuario()"></button>
+</p-menubar>
+<button pButton id="botonAgregar" class="p-button-success" label="Agregar Producto" (click)="mostrarDialogo()"></button>
+
+<!-- <p-dialog header="{{textoBoton}}" [(visible)]="modalVisible">
+    <form [formGroup]="libro">
+        <span class="p-float-label">
+            <input id="float-input" type="text" pInputText formControlName="titulo"> 
+            <label for="float-input">Tílulo</label>
+        </span>
+        <span class="p-float-label">
+            <input id="float-input" type="text" pInputText formControlName="autor"> 
+            <label for="float-input">Autor</label>
+        </span>
+        <span class="p-float-label">
+            <input id="float-input" type="text" pInputText formControlName="editorial"> 
+            <label for="float-input">Editorial</label>
+        </span>
+        <span class="p-float-label">
+            <input id="float-input" type="number" pInputText formControlName="ISBN"> 
+            <label for="float-input">ISBN</label>
+        </span>
+        <span class="p-float-label">
+            <input id="float-input" type="text" pInputText formControlName="img"> 
+            <label for="float-input">Imagen</label>
+        </span>
+        <button pButton class="p-button-success" label="{{textoBoton}}" (click)="cargarDatos()"></button>
+    </form>
+</p-dialog> -->
+
+<p-dialog header="¡¡¡ADVERTENCIA!!!" [(visible)]="eliminarVisible">
+    <p>¿Deseas eliminar este Producto?</p>
+    <button pButton class="p-button-success p-button-rounded p-button-raised" icon="pi pi-check" (click)="eliminarProducto()"></button>
+    <button pButton class="p-button-danger p-button-rounded p-button-raised" icon="pi pi-times" (click)="eliminarVisible=false"></button>
+</p-dialog>
+
+<p-dialog header="{{textoBoton}}" [(visible)]="modalVisible">
+    <form [formGroup]="nuevoProducto">
+        <img [src]="imagen" alt="aun no hay imagen" id="previsualizacion">
+        <span class="p-float-label">
+            <input id="float-input" type="text" pInputText formControlName="nombre"> 
+            <label for="float-input">Nombre Producto</label>
+        </span>
+        <span class="p-float-label">
+            <input id="float-input" type="number" pInputText formControlName="precio"> 
+            <label for="float-input">Precio</label>
+        </span>
+        <span class="p-float-label">
+            <input id="float-input" type="text" pInputText formControlName="descripcion">
+            <label for="float-input">Descripción</label>
+        </span>
+        <input id="float-input" type="file" class="p-float-label" pInputText accept=".jpg, .png, .gif" (change)="cargarImagen($event)">
+        <button pButton id="botonAgregarForm" class="p-button-success" label="{{textoBoton}}" (click)="cargarProducto()"></button>
+    </form>
+</p-dialog>
+
+<!-- <p-card *ngFor="let libro of coleccionDeLibros" title="Libro">
+    <img src="{{libro.img}}">
+    <p><strong>Título</strong>: {{libro.titulo}}</p>
+    <p><strong>Autor</strong>: {{libro.autor}}</p>
+    <p><strong>Editorial</strong>: {{libro.editorial}}</p>
+    <p><strong>ISBN</strong>: {{libro.ISBN}}</p>
+    <button pButton class="p-button-success p-button-rounded p-button-raised" icon="pi pi-pencil" (click)="mostrarEditar(libro)"></button>
+    <button pButton class="p-button-danger p-button-rounded p-button-raised" icon="pi pi-trash" (click)="mostrarEliminar(libro)"></button>
+</p-card> -->
+
+<p-card *ngFor="let producto of productos" title="Libro">
+    <img src="{{producto.img}}">
+    <p><strong>Artículo</strong>: {{producto.nombre}}</p>
+    <p><strong>Descripción</strong>: {{producto.descripcion}}</p>
+    <p><strong>Precio</strong>: {{producto.precio}}</p>
+    <button pButton class="p-button-success p-button-rounded p-button-raised" icon="pi pi-pencil" (click)="mostrarEditar(producto)"></button>
+    <button pButton class="p-button-danger p-button-rounded p-button-raised" icon="pi pi-trash" (click)="mostrarEliminar(producto)"></button>
+</p-card>
+
+<router-outlet></router-outlet>
